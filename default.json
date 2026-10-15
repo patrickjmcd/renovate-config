@@ -3,6 +3,7 @@
   "description": "Shared Renovate preset for patrickjmcd's repos. Use with: { \"extends\": [\"local>patrickjmcd/renovate-config\"] }",
   "extends": ["config:recommended"],
   "timezone": "America/Chicago",
+  "prHourlyLimit": 0,
   "postUpdateOptions": ["gomodTidy"],
   "packageRules": [
     {
@@ -30,11 +31,40 @@
       "schedule": ["before 6am on monday"]
     },
     {
-      "description": "One PR for non-major GitHub Actions updates",
+      "description": "One PR for non-major Docker base image updates",
+      "matchManagers": ["dockerfile", "docker-compose"],
+      "matchUpdateTypes": ["minor", "patch", "digest"],
+      "groupName": "Docker images",
+      "groupSlug": "docker-images"
+    },
+    {
+      "description": "One PR for non-major GitHub Actions updates, merged automatically once CI passes",
       "matchManagers": ["github-actions"],
       "matchUpdateTypes": ["minor", "patch", "digest"],
       "groupName": "GitHub Actions",
-      "groupSlug": "github-actions"
+      "groupSlug": "github-actions",
+      "automerge": true
+    },
+    {
+      "description": "One PR for all major GitHub Actions updates (mostly Node runtime bumps), instead of one per action",
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["major"],
+      "groupName": "GitHub Actions (major)",
+      "groupSlug": "github-actions-major"
+    },
+    {
+      "description": "Node.js and pnpm versions (.nvmrc, engines, packageManager, Docker node images, @types/node) in one PR",
+      "matchPackageNames": ["node", "@types/node", "pnpm"],
+      "matchUpdateTypes": ["minor", "patch", "digest"],
+      "groupName": "Node.js and pnpm",
+      "groupSlug": "node-toolchain"
+    },
+    {
+      "description": "Major Node.js and pnpm versions in one PR",
+      "matchPackageNames": ["node", "@types/node", "pnpm"],
+      "matchUpdateTypes": ["major"],
+      "groupName": "Node.js and pnpm (major)",
+      "groupSlug": "node-toolchain-major"
     }
   ]
 }

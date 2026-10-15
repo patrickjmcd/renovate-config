@@ -12,14 +12,20 @@ Shared [Renovate](https://docs.renovatebot.com/) preset for my repos.
 `default.json` builds on `config:recommended` and groups non-major updates so
 each repo gets a handful of PRs instead of one per dependency:
 
-| Ecosystem | Non-major updates | Schedule |
+| Updates | PR | Schedule |
 |---|---|---|
-| npm / pnpm | one "npm non-major dependencies" PR | Monday before 6am (Central) |
-| Go modules | one "Go non-major dependencies" PR (`go mod tidy` run) | Monday before 6am |
-| Python | one "Python non-major dependencies" PR | Monday before 6am |
-| GitHub Actions | one "GitHub Actions" PR | any time |
+| npm / pnpm, non-major | one "npm non-major dependencies" PR | Monday before 6am (Central) |
+| Go modules, non-major | one "Go non-major dependencies" PR (`go mod tidy` run) | Monday before 6am |
+| Python, non-major | one "Python non-major dependencies" PR | Monday before 6am |
+| Docker base images, non-major | one "Docker images" PR | any time |
+| GitHub Actions, non-major | one "GitHub Actions" PR, **automerged** when CI passes | any time |
+| GitHub Actions, major | one "GitHub Actions (major)" PR | any time |
+| Node.js / pnpm / `@types/node` | one "Node.js and pnpm" PR (+ one for majors) | any time |
 
-Major updates still get their own PRs. Repo-specific rules go in that repo's
+No hourly PR limit: grouping keeps the count low, and the default 2/hour left
+most of a newly onboarded repo's updates queued for days.
+
+Major updates of libraries (npm, Go, Python) still get their own PRs, since those can break code. Repo-specific rules go in that repo's
 `renovate.json` after the `extends`; they take precedence over this preset.
 
 The Renovate GitHub App needs access to this repo for `local>` presets to resolve.
