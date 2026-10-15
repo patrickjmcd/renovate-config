@@ -98,9 +98,9 @@
       "groupSlug": "github-actions-major"
     },
     {
-      "description": "Node.js and pnpm versions (.nvmrc, engines, packageManager, Docker node images, @types/node) in one PR",
+      "description": "Node.js and pnpm versions (.nvmrc, Docker node images, @types/node, packageManager pnpm). The pattern is anchored so npm packages like @astrojs/node aren't swept in.",
       "matchPackageNames": [
-        "/(?:^|/)node$/",
+        "/^(?:(?:docker\\.io/)?library/)?node$/",
         "@types/node",
         "pnpm"
       ],
@@ -115,7 +115,7 @@
     {
       "description": "Major Node.js and pnpm versions in one PR",
       "matchPackageNames": [
-        "/(?:^|/)node$/",
+        "/^(?:(?:docker\\.io/)?library/)?node$/",
         "@types/node",
         "pnpm"
       ],
