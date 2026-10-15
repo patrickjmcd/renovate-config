@@ -1,0 +1,40 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "Shared Renovate preset for patrickjmcd's repos. Use with: { \"extends\": [\"local>patrickjmcd/renovate-config\"] }",
+  "extends": ["config:recommended"],
+  "timezone": "America/Chicago",
+  "postUpdateOptions": ["gomodTidy"],
+  "packageRules": [
+    {
+      "description": "One weekly PR for all non-major npm updates, so they stop conflicting in the lockfile",
+      "matchManagers": ["npm"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "npm non-major dependencies",
+      "groupSlug": "npm-non-major",
+      "schedule": ["before 6am on monday"]
+    },
+    {
+      "description": "One weekly PR for all non-major Go module updates",
+      "matchManagers": ["gomod"],
+      "matchUpdateTypes": ["minor", "patch", "digest"],
+      "groupName": "Go non-major dependencies",
+      "groupSlug": "go-non-major",
+      "schedule": ["before 6am on monday"]
+    },
+    {
+      "description": "One weekly PR for all non-major Python updates",
+      "matchManagers": ["pep621", "pip_requirements", "poetry"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "Python non-major dependencies",
+      "groupSlug": "python-non-major",
+      "schedule": ["before 6am on monday"]
+    },
+    {
+      "description": "One PR for non-major GitHub Actions updates",
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["minor", "patch", "digest"],
+      "groupName": "GitHub Actions",
+      "groupSlug": "github-actions"
+    }
+  ]
+}
