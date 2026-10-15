@@ -9,6 +9,17 @@
   "postUpdateOptions": [
     "gomodTidy"
   ],
+  "ignorePaths": [
+    "**/node_modules/**",
+    "**/bower_components/**",
+    "**/vendor/**",
+    "**/examples/**",
+    "**/__tests__/**",
+    "**/test/**",
+    "**/tests/**",
+    "**/__fixtures__/**",
+    "**/testdata/**"
+  ],
   "packageRules": [
     {
       "description": "One weekly PR for all non-major npm updates, so they stop conflicting in the lockfile",
