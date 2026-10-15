@@ -22,6 +22,10 @@ each repo gets a handful of PRs instead of one per dependency:
 | GitHub Actions, major | one "GitHub Actions (major)" PR | any time |
 | Node.js / pnpm / `@types/node` | one "Node.js and pnpm" PR (+ one for majors) | any time |
 
+TypeScript majors wait for approval on the Dependency Dashboard: TypeScript 7
+changed the compiler API that Next.js and SvelteKit load it through, so they
+break builds until those tools catch up.
+
 No hourly PR limit: grouping keeps the count low, and the default 2/hour left
 most of a newly onboarded repo's updates queued for days.
 

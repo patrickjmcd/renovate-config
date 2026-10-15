@@ -124,6 +124,16 @@
       ],
       "groupName": "Node.js and pnpm",
       "groupSlug": "node-toolchain-major"
+    },
+    {
+      "description": "TypeScript 7 (the native port) changed the compiler API that Next.js, SvelteKit and other tools load it through, so majors break builds until they catch up. Listed on the Dependency Dashboard for manual approval instead of opening PRs.",
+      "matchPackageNames": [
+        "typescript"
+      ],
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "dependencyDashboardApproval": true
     }
   ]
 }
