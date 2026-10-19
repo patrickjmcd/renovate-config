@@ -26,6 +26,9 @@ TypeScript majors wait for approval on the Dependency Dashboard: TypeScript 7
 changed the compiler API that Next.js and SvelteKit load it through, so they
 break builds until those tools catch up.
 
+npm updates wait a day after release (`minimumReleaseAge`), matching pnpm 12's
+own minimum release age; otherwise a fresh release fails the PR's first install.
+
 No hourly PR limit: grouping keeps the count low, and the default 2/hour left
 most of a newly onboarded repo's updates queued for days.
 

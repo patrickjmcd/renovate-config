@@ -22,6 +22,13 @@
   ],
   "packageRules": [
     {
+      "description": "pnpm 12 refuses packages published less than a day ago (minimumReleaseAge 1440), so a PR with a fresh release fails its first install/build. Wait just as long before proposing npm updates.",
+      "matchDatasources": [
+        "npm"
+      ],
+      "minimumReleaseAge": "1 day"
+    },
+    {
       "description": "One weekly PR for all non-major npm updates, so they stop conflicting in the lockfile",
       "matchManagers": [
         "npm"
